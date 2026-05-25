@@ -1,13 +1,69 @@
 // ===== FLIP CARDS DATA =====
 const FLIP_CARDS = [
-    { tag: 'Did you know?', title: '教育差距', color: 'var(--muted-sage)', back: '全球有 1.29 億女童未能就學，佔失學兒童的 53%。受教育的機會仍是許多地區女性面臨的最大障礙之一。' },
-    { tag: 'Global Fact', title: '薪資不平等', color: 'var(--dusty-amethyst)', back: '全球女性平均薪資比男性低 20%。在相同職位與資歷下，這個差距依然存在——被稱為「無法解釋的薪酬差距」。' },
-    { tag: 'Think About It', title: '家務分配', color: '#B8A99A', back: '女性每天花在無酬家務與照護工作上的時間，平均是男性的 3 倍。這些工作支撐了整個社會的運作，卻鮮少被計入 GDP。' },
-    { tag: 'Leadership', title: '政治參與', color: 'var(--muted-sage)', back: '截至 2023 年，全球國會席次中女性僅佔 26.5%。儘管有所進步，要達到真正的代表性仍需數十年。' },
-    { tag: 'Did you know?', title: '科技性別鴻溝', color: 'var(--dusty-amethyst)', back: '全球科技產業女性員工佔比不足 28%，在 AI 研究領域更僅有 22%。這意味著設計未來的力量仍由少數人主導。' },
-    { tag: 'Social Reality', title: '暴力問題', color: '#B8A99A', back: '全球每 3 位女性中，就有 1 位在一生中曾遭受身體或性暴力。這是世界上最普遍的人權侵犯之一。' },
-    { tag: 'Progress', title: '法律保障', color: 'var(--muted-sage)', back: '1995 年以來，已有超過 100 個國家修訂了涉及性別平等的法律。但法律的存在與實際執行之間，依然存在巨大鴻溝。' },
-    { tag: 'Health', title: '生育健康', color: 'var(--dusty-amethyst)', back: '每天有 800 位女性死於可預防的孕產原因。在低收入國家，缺乏醫療資源讓生育成為女性最危險的時刻。' },
+    { 
+        tag: 'Did you know?', 
+        title: '教育差距', 
+        color: 'var(--muted-sage)', 
+        back: '全球有高達 1.19 億名女童被迫失學，受教育機會的匱乏，依然是她們翻轉命運、實現自我最大的阻礙。',
+        sourceName: 'UNICEF 聯合國兒童基金會',
+        sourceUrl: 'https://www.unicef.org/education/girls-education'
+    },
+    { 
+        tag: 'Global Fact', 
+        title: '薪資不平等', 
+        color: 'var(--dusty-amethyst)', 
+        back: '全球女性平均薪資比男性低 20%。在相同職位與資歷下，這個差距依然存在——這在經濟學上被稱為「無法解釋的薪酬差距」。',
+        sourceName: 'ILO 國際勞工組織',
+        sourceUrl: 'https://www.un.org/en/observances/equal-pay-day' 
+    },
+{ 
+        tag: 'Think About It', 
+        title: '家務分配', 
+        color: '#B8A99A', 
+        back: '女性每天花在無酬家務與照護工作上的時間，平均是男性的2.5倍。這些工作支撐了整個社會的運作，卻鮮少被計入 GDP。',
+        sourceName: 'UN Women 聯合國婦女署',
+        sourceUrl: 'https://www.unwomen.org/en/articles/faqs/faqs-what-is-unpaid-care-work-and-how-does-it-power-the-economy'
+    },
+{ 
+        tag: 'Leadership', 
+        title: '政治參與', 
+        color: 'var(--muted-sage)', 
+        back: '截至 2026 年，全球國會席次中女性僅佔 27.5%。儘管比例微幅上升，但專家警告，以目前每年不到 0.5% 的龜速進展，要達到真正的性別平權，還要再等至少 75 年。',
+        sourceName: 'IPU 各國議會聯盟',
+        sourceUrl: 'https://www.ipu.org/news/press-releases/2026-03/womens-representation-in-parliament-sees-sluggish-gains'
+    },
+{ 
+        tag: 'Did you know?', 
+        title: '科技性別鴻溝', 
+        color: 'var(--dusty-amethyst)', 
+        back: '全球 STEM（科技）產業的女性佔比僅 28.2%。這意味著設計未來的力量，至今仍由單一視角主導。',
+        sourceName: 'WEF 世界經濟論壇',
+        sourceUrl: 'https://www.weforum.org/publications/global-gender-gap-report-2024/in-full/economic-and-leadership-gaps-constraining-growth-and-skewing-transitions-7b05a512cb/' 
+    },
+    { 
+        tag: 'Social Reality', 
+        title: '暴力問題', 
+        color: '#B8A99A', 
+        back: '全球約有三分之一（30%）的女性，在一生中曾遭受身體或性暴力。這是世界上最普遍、卻最常被隱忍的人權侵犯之一。',
+        sourceName: 'WHO 世界衛生組織',
+        sourceUrl: 'https://www.who.int/news-room/fact-sheets/detail/violence-against-women'
+    },
+    { 
+       tag: 'Progress', 
+        title: '法律保障', 
+        color: 'var(--muted-sage)', 
+        back: '全球女性享有的法定權利僅為男性的 64%，法律條文與實際執行之間的落差巨大，全球平均落實率不到 40%。',
+        sourceName: 'World Bank 世界銀行',
+        sourceUrl: 'https://www.worldbank.org/en/news/press-release/2024/03/04/new-data-show-massive-wider-than-expected-global-gender-gap'
+    },
+    { 
+        tag: 'Health', 
+        title: '生育健康', 
+        color: 'var(--dusty-amethyst)', 
+        back: '每天仍有約 800 位女性死於可預防的孕產期併發症。其中高達 95% 發生在中低收入國家，凸顯了醫療資源不平等的致命影響。',
+        sourceName: 'WHO 世界衛生組織',
+        sourceUrl: 'https://www.who.int/news-room/fact-sheets/detail/maternal-mortality'
+    }
 ];
 
 // ===== QUIZ DATA =====
@@ -65,12 +121,92 @@ const COUNTRIES = [
 
 // ===== EXHIBITION DATA =====
 const EXHIBITS = [
-    { id: 1, category: '職場', title: '玻璃天花板', subtitle: 'The Glass Ceiling', desc: '在 Fortune 500 企業中，女性 CEO 的比例首次在 2023 年突破 10%。這個數字雖是歷史新高，卻也揭示了職場頂層的性別鴻溝仍有多深。', img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80', size: 'large' },
-    { id: 2, category: '教育', title: '求知的權利', subtitle: 'Right to Learn', desc: '教育是改變命運最有力的工具。當女孩能夠受教育，社區的健康、經濟和社會指標都會隨之提升。', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80', size: 'small' },
-    { id: 3, category: '社會文化', title: '共同承擔', subtitle: 'Shared Responsibility', desc: '父親參與育兒，不只是家庭的選擇，更是打破性別刻板印象的社會行動。研究顯示，主動育兒的父親能養育出更具性別平等觀念的孩子。', img: 'https://images.unsplash.com/photo-1491013516836-7db643ee125a?w=600&q=80', size: 'small' },
-    { id: 4, category: '職場', title: '科技的臉孔', subtitle: 'Faces of Tech', desc: 'AI 與科技工具的設計，反映了設計者的偏見。當科技業的性別多元度提升，我們才能打造更公平的未來。', img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80', size: 'large' },
-    { id: 5, category: '社會文化', title: '街頭空間', subtitle: 'Street & Space', desc: '城市的設計常以男性的移動模式為預設。讓城市對所有性別都安全，是性別平等在日常空間中的具體實踐。', img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80', size: 'small' },
-    { id: 6, category: '教育', title: 'STEM 的未來', subtitle: 'Future of STEM', desc: '鼓勵女性進入 STEM 領域，不僅是公平問題，更是全球科技進步的關鍵。多元的團隊能提出更好的解決方案。', img: 'https://images.unsplash.com/photo-1532094349884-543559b61c5c?w=600&q=80', size: 'small' },
-    { id: 7, category: '職場', title: '無酬勞動', subtitle: 'Unpaid Labor', desc: '全球女性每天平均花費 4.4 小時從事無酬照護工作，是男性的兩倍。這些工作支撐著整個社會，卻幾乎隱形。', img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80', size: 'large' },
-    { id: 8, category: '社會文化', title: '語言的力量', subtitle: 'Power of Language', desc: '語言塑造我們對性別的認知。從代詞的多元化到職業名稱的去性別化，語言的改變是意識改變的起點。', img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80', size: 'small' },
+    { 
+        id: 1, 
+        category: '科普與經濟', 
+        title: '諾貝爾獎與「母職懲罰」', 
+        subtitle: 'The Motherhood Penalty', 
+        desc: '2023年諾貝爾經濟學獎得主克勞迪婭·戈爾丁（Claudia Goldin），首次全面梳理了百年來女性的勞動力數據。她的研究證實，現代男女薪資差異不再只是因為教育程度，而是從「女性第一個孩子出生」那一刻起產生了難以跨越的鴻溝，這被稱為「母職懲罰」。', 
+        img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80', 
+        size: 'large',
+        sourceName: 'The Nobel Prize 官方聲明',
+        sourceUrl: 'https://www.nobelprize.org/prizes/economic-sciences/2023/press-release/'
+    },
+    { 
+        id: 2, 
+        category: '科技與醫療', 
+        title: '看不見的女性與致命數據', 
+        subtitle: 'The Gender Data Gap', 
+        desc: '你知道汽車防撞測試的假人，長年來都是以「男性體型」為預設基準嗎？這導致女性在嚴重車禍中受重傷的機率比男性高出 47%。《看不見的女性》一書揭露了這個忽視女性身體構造的致命科學盲點。', 
+        img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80', 
+        size: 'small',
+        sourceName: 'BBC 新聞：為何世界對女性不友善',
+        sourceUrl: 'https://www.bbc.com/zhongwen/trad/world-48995325'
+    },
+    { 
+        id: 3, 
+        category: '國際新聞', 
+        title: '冰島十萬婦女大罷工', 
+        subtitle: 'Women\'s Day Off in Iceland', 
+        desc: '2023年10月，超過十萬名冰島女性（包含冰島總理）走上街頭進行全日罷工，抗議性別薪資差距與性別暴力。這場運動讓這個連續14年蟬聯「性別平權世界第一」的模範國家，日常運作完全停擺。', 
+        img: 'https://images.unsplash.com/photo-1531263060782-b024de9b9793?w=600&q=80', 
+        size: 'small',
+        sourceName: '中央社：冰島婦女罷工爭平權',
+        sourceUrl: 'https://www.cna.com.tw/news/aopl/202310240366.aspx'
+    },
+    { 
+        id: 4, 
+        category: '台灣現況', 
+        title: '多工作 54 天的「同酬日」', 
+        subtitle: 'Taiwan Equal Pay Day', 
+        desc: '根據台灣勞動部統計，2024年的「性別同酬日」落在2月23日。這意味著，台灣女性在2023年必須比男性「多工作 54 天」，才能達到與男性相同的全年總薪資。', 
+        img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80', 
+        size: 'large',
+        sourceName: '中華民國勞動部公告',
+        sourceUrl: 'https://www.mol.gov.tw/1607/1632/1633/68641/post'
+    },
+    { 
+        id: 5, 
+        category: '新聞事件', 
+        title: '奧運史上的第一次 50:50', 
+        subtitle: 'Paris 2024 Olympics', 
+        desc: '2024 巴黎奧運寫下歷史，參賽的男女運動員名額首次達到完美的 50:50 比例。相較於 1900 年巴黎奧運時，女性運動員僅佔 2.2%，這是一百多年來推動體育平權的重大里程碑。', 
+        img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80', 
+        size: 'small',
+        sourceName: '國際奧林匹克委員會 (IOC)',
+        sourceUrl: 'https://olympics.com/ioc/gender-equality'
+    },
+    { 
+        id: 6, 
+        category: '政策與社會', 
+        title: '終結月經貧窮的蘇格蘭', 
+        subtitle: 'Ending Period Poverty', 
+        desc: '2022年，蘇格蘭正式成為全球第一個立法「免費提供生理用品」的國家。這項法案不僅打破了傳統的月經羞辱，更從制度面解決了長期被忽視的「月經稅」與經濟弱勢女性的困境。', 
+        img: 'https://images.unsplash.com/photo-1584308666744-24d5e4a81d4a?w=600&q=80', 
+        size: 'small',
+        sourceName: 'The Guardian 報導',
+        sourceUrl: 'https://www.theguardian.com/uk-news/2022/aug/15/scotland-becomes-first-nation-to-provide-free-period-products-for-all'
+    },
+    { 
+        id: 7, 
+        category: '國際新聞', 
+        title: '被全面剝奪的受教權', 
+        subtitle: 'Afghan Women\'s Education', 
+        desc: '截至 2024 年，阿富汗是全球唯一全面禁止女性接受中學及大學教育的國家。聯合國教科文組織嚴厲譴責，這項禁令影響了超過數百萬名阿富汗女孩，讓當地的平權進展倒退回數十年前。', 
+        img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80', 
+        size: 'large',
+        sourceName: 'UNESCO 聯合國教科文組織',
+        sourceUrl: 'https://www.unesco.org/en/articles/unesco-dedicates-2023-international-day-education-afghan-girls-and-women'
+    },
+    { 
+        id: 8, 
+        category: '科普與生活', 
+        title: '生活中的隱形剝削：粉紅稅', 
+        subtitle: 'The Pink Tax', 
+        desc: '走進超市，你會發現包裝為粉紅色、標榜「女性專用」的除毛刀或沐浴乳，即使成分與男性產品完全相同，價格卻往往高出 7% 到 13%。這正是生活中無處不在的「粉紅稅」現象。', 
+        img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80', 
+        size: 'small',
+        sourceName: '世界經濟論壇：什麼是粉紅稅',
+        sourceUrl: 'https://www.weforum.org/agenda/2022/07/pink-tax-gender-pricing-inflation/'
+    }
 ];
