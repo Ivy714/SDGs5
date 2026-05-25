@@ -54,6 +54,45 @@
         /* SVG 動畫 */
         #scale-beam { transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: 280px 60px; }
         .pan-content { transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        
+        /* 讓翻譯下拉選單更符合你的配色 */
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: 1px solid var(--warm-gray) !important;
+            border-radius: 8px !important;
+            padding: 2px 8px !important;
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        /* 隱藏翻譯後的頂部橫幅（讓畫面更乾淨） */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+        /* 強制修正翻譯工具外觀 */
+        #google_translate_element {
+            min-width: 150px;
+            height: 30px;
+        }
+
+        /* 隱藏 Google 翻譯產生的頂部藍色橫條 */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        body {
+            top: 0px !important;
+        }
+
+        /* 讓選單文字跟你的網頁風格更統一 */
+        .goog-te-gadget-simple {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            border: 1px solid var(--warm-gray) !important;
+            border-radius: 20px !important;
+            padding: 4px 12px !important;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -68,6 +107,7 @@
                 <button class="nav-link" onclick="scrollToSection('quiz')">小測驗</button>
                 <button class="nav-link" onclick="scrollToSection('balance')">天平</button>
                 <button class="nav-link" onclick="scrollToSection('exhibition')">線上展覽</button>
+                <div id="google_translate_element" style="display: inline-block; vertical-align: middle; margin-left: 15px;"></div>
             </div>
             <span class="nav-sdg">SDG 5</span>
         </div>
@@ -584,5 +624,17 @@
         document.addEventListener('DOMContentLoaded', initNewBalanceScale);
 
     </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'zh-TW',
+                includedLanguages: 'en,ja,ko,it,fr,th',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

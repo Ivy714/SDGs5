@@ -1,7 +1,7 @@
 // ===== FLIP CARDS DATA =====
 const FLIP_CARDS = [
-    { tag: 'Did you know?', title: '教育差距', color: 'var(--muted-sage)', back: '全球有 1.29 億女童未能就學，佔失學兒童的 53%。受教育的機會仍是許多地區女性面臨的最大障礙之一。' },
-    { tag: 'Global Fact', title: '薪資不平等', color: 'var(--dusty-amethyst)', back: '全球女性平均薪資比男性低 20%。在相同職位與資歷下，這個差距依然存在——被稱為「無法解釋的薪酬差距」。' },
+    { tag: 'Did you know?', title: '同酬日', color: 'var(--muted-sage)', back: '全球有 1.29 億女童未能就學，佔失學兒童的 53%。受教育的機會仍是許多地區女性面臨的最大障礙之一。' },
+    { tag: 'Period Poverty', title: '月經貧窮', color: 'var(--dusty-amethyst)', back: '指因經濟困境而無法負擔或取得足夠且適當的生理用品，造成生理疾病和心理問題，生活陷入長期受影響的狀態。在台灣，約9%的女性遭遇月經貧窮，增加了額外的財務負擔。' },
     { tag: 'Think About It', title: '家務分配', color: '#B8A99A', back: '女性每天花在無酬家務與照護工作上的時間，平均是男性的 3 倍。這些工作支撐了整個社會的運作，卻鮮少被計入 GDP。' },
     { tag: 'Leadership', title: '政治參與', color: 'var(--muted-sage)', back: '截至 2023 年，全球國會席次中女性僅佔 26.5%。儘管有所進步，要達到真正的代表性仍需數十年。' },
     { tag: 'Did you know?', title: '科技性別鴻溝', color: 'var(--dusty-amethyst)', back: '全球科技產業女性員工佔比不足 28%，在 AI 研究領域更僅有 22%。這意味著設計未來的力量仍由少數人主導。' },
