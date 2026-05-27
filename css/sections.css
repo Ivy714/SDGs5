@@ -490,111 +490,107 @@
 }
 
 .balance-inner {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.scale-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.scale-svg-container {
-    width: 100%;
-    max-width: 560px;
-    height: 320px;
-}
-
-.data-display {
-    text-align: center;
-    max-width: 480px;
-    transition: opacity 0.3s;
-}
-
-.data-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.ggi-value {
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    transition: color 0.7s;
-}
-
-.ggi-badge {
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: background 0.7s, color 0.7s;
-}
-
-.ggi-note {
-    font-size: 0.875rem;
-    color: var(--muted-sage);
-    line-height: 1.6;
-}
-
-.progress-wrap {
-    max-width: 240px;
-    margin: 16px auto 0;
-}
-
-.progress-track {
-    height: 6px;
-    border-radius: 9999px;
-    background: var(--sandstone);
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 9999px;
-    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.7s;
-}
-
-.progress-label {
-    font-size: 0.75rem;
-    color: var(--warm-gray);
-    margin-top: 4px;
-}
-
-.country-grid {
+/* 並排版面：左天平 sticky，右選國家 */
+.balance-sidebyside {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 32px;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
 }
 
-@media (min-width: 768px) {
-    .country-grid {
-        grid-template-columns: repeat(6, 1fr);
+@media (min-width: 960px) {
+    .balance-sidebyside {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
     }
 }
 
-.country-btn {
-    border-radius: 12px;
-    padding: 8px 12px;
-    font-size: 0.75rem;
-    text-align: center;
-    transition: transform 0.15s, background 0.3s, color 0.3s;
-    background: var(--sandstone);
-    color: var(--ink-stone);
+/* 左側：天平＋數據，滾動時吸附 */
+.balance-left-sticky {
+    position: sticky;
+    top: 80px;
 }
 
-.country-btn:hover {
-    transform: scale(1.05);
+@media (max-width: 959px) {
+    .balance-left-sticky {
+        position: static;
+    }
 }
 
-.country-btn.active {
-    color: white;
+/* 右側：可獨立滾動的國家清單 */
+.balance-right-scroll {
+    min-width: 0;
+}
+
+.balance-right-inner {
+    background: #fff;
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+    max-height: 72vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--muted-sage) #f3f4f6;
+}
+
+.balance-right-inner::-webkit-scrollbar {
+    width: 5px;
+}
+
+.balance-right-inner::-webkit-scrollbar-track {
+    background: #f3f4f6;
+    border-radius: 99px;
+}
+
+.balance-right-inner::-webkit-scrollbar-thumb {
+    background: var(--muted-sage);
+    border-radius: 99px;
+}
+
+@media (max-width: 959px) {
+    .balance-right-inner {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+/* 搜尋框 */
+.country-search-wrap {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.country-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.country-search-input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    background: #fafafa;
+}
+
+.country-search-input:focus {
+    border-color: var(--muted-sage);
+    box-shadow: 0 0 0 3px rgba(139, 154, 130, 0.15);
+    background: #fff;
 }
 
 /* ===== EXHIBITION ===== */

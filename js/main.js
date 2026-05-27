@@ -4,6 +4,32 @@ function scrollToSection(id) {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
+// ===== HAMBURGER MENU =====
+function toggleMobileNav() {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.getElementById('hamburger');
+    if (!nav || !btn) return;
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function mobileNavGo(section) {
+    toggleMobileNav();
+    setTimeout(() => {
+        const el = document.getElementById(section);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 350);
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileNav = document.getElementById('mobile-nav');
+    if (mobileNav) {
+        mobileNav.addEventListener('click', function (e) {
+            if (e.target === this) toggleMobileNav();
+        });
+    }
+});
+
 // ===== NAVBAR =====
 (function () {
     const nav = document.getElementById('navbar');
@@ -35,19 +61,19 @@ function scrollToSection(id) {
 
 // ===== FLIP CARDS =====
 (function () {
-  const grid = document.getElementById('flip-grid');
-  // 1. 先定義觀察者（如果原本的 obs 是區域變數，建議這裡重新建立或設為全域）
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+    const grid = document.getElementById('flip-grid');
+    // 1. 先定義觀察者（如果原本的 obs 是區域變數，建議這裡重新建立或設為全域）
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
 
-  if (!grid || typeof FLIP_CARDS === 'undefined') return;
+    if (!grid || typeof FLIP_CARDS === 'undefined') return;
 
-  FLIP_CARDS.forEach((c, i) => {
-    const wrap = document.createElement('div');
-    wrap.className = 'flip-card-wrap section-fade'; // 這裡有 section-fade
-    wrap.style.transitionDelay = `${i * 0.08}s`;
-    wrap.innerHTML = `
+    FLIP_CARDS.forEach((c, i) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'flip-card-wrap section-fade'; // 這裡有 section-fade
+        wrap.style.transitionDelay = `${i * 0.08}s`;
+        wrap.innerHTML = `
             <div class="flip-card-inner-el">
                 <div class="flip-card-front">
                     <span class="flip-card-tag" style="color:${c.color}">${c.tag}</span>
@@ -65,10 +91,10 @@ function scrollToSection(id) {
                 </div>
             </div>`;
 
-    wrap.addEventListener('click', () => wrap.classList.toggle('flipped'));
-    grid.appendChild(wrap);
+        wrap.addEventListener('click', () => wrap.classList.toggle('flipped'));
+        grid.appendChild(wrap);
 
-    // 【關鍵修正】：卡片加入 DOM 後，立刻叫觀察者開始看它
-    obs.observe(wrap);
-  });
+        // 【關鍵修正】：卡片加入 DOM 後，立刻叫觀察者開始看它
+        obs.observe(wrap);
+    });
 })();
