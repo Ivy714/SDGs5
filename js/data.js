@@ -28,7 +28,7 @@ const FLIP_CARDS = [
         tag: 'Leadership', 
         title: '政治參與', 
         color: 'var(--muted-sage)', 
-        back: '截至 2026 年，全球國會席次中女性僅佔 27.5%。儘管比例微幅上升，但專家警告，以目前每年不到 0.5% 的龜速進展，要達到真正的性別平權，還要再等至少 75 年。',
+        back: '截至 2026 年，全球國會席次中女性僅佔 27.5%。儘管比例上升，但以目前的龜速進展，要達到真正的性別平權，還要再等至少 75 年。',
         sourceName: 'IPU 各國議會聯盟',
         sourceUrl: 'https://www.ipu.org/news/press-releases/2026-03/womens-representation-in-parliament-sees-sluggish-gains'
     },
@@ -182,7 +182,7 @@ const EXHIBITS = [
         title: '終結月經貧窮的蘇格蘭', 
         subtitle: 'Ending Period Poverty', 
         desc: '2022年，蘇格蘭正式成為全球第一個立法「免費提供生理用品」的國家。這項法案不僅打破了傳統的月經羞辱，更從制度面解決了長期被忽視的「月經稅」與經濟弱勢女性的困境。', 
-        img: 'https://images.unsplash.com/photo-1584308666744-24d5e4a81d4a?w=600&q=80', 
+        img: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&q=80', 
         size: 'small',
         sourceName: 'The Guardian 報導',
         sourceUrl: 'https://www.theguardian.com/uk-news/2022/aug/15/scotland-becomes-first-nation-to-provide-free-period-products-for-all'
@@ -204,9 +204,20 @@ const EXHIBITS = [
         title: '生活中的隱形剝削：粉紅稅', 
         subtitle: 'The Pink Tax', 
         desc: '走進超市，你會發現包裝為粉紅色、標榜「女性專用」的除毛刀或沐浴乳，即使成分與男性產品完全相同，價格卻往往高出 7% 到 13%。這正是生活中無處不在的「粉紅稅」現象。', 
-        img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80', 
+        img: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&q=80', 
         size: 'small',
         sourceName: '世界經濟論壇：什麼是粉紅稅',
         sourceUrl: 'https://www.weforum.org/agenda/2022/07/pink-tax-gender-pricing-inflation/'
+    },
+    { 
+        id: 9, 
+        category: '台灣現況', 
+        title: '玫瑰少年的逝去與重生', 
+        subtitle: 'The Rose Boy Incident', 
+        desc: '2000 年，國中生葉永鋕因性別氣質陰柔，長期遭受校園霸凌而不敢在下課時上廁所，最終不幸於廁所滑倒離世。這起令人心碎的悲劇震驚社會，直接促成了 2004 年《性別平等教育法》的通過，讓多元性別正式納入教育體系。', 
+        img: 'https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=600&h=600&fit=crop&q=80', 
+        size: 'small',
+        sourceName: '教育部性別平等教育全球資訊網',
+        sourceUrl: 'https://www.gender.edu.tw/'
     }
 ];
