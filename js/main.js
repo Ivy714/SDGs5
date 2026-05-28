@@ -85,10 +85,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         </div>
                     </div>
                 </div>
-                <div class="flip-card-back" style="background:${c.color}">
-                    <p class="flip-card-text">${c.back}</p>
-                    <div style="margin-top:16px"><div style="width:24px;height:1px;background:rgba(255,255,255,0.5)"></div></div>
-                </div>
+            <div class="flip-card-back" style="background-color: ${c.color}">
+            <p>${c.back}</p>
+    
+            <!-- 加上分隔線與超連結結構 -->
+            <div style="width: 20px; height: 1px; min-height: 1px; flex-shrink: 0; background-color: rgba(255,255,255,0.5); margin: 10px 0;"></div>        <p class="source-text" style="font-size: 0.8rem; margin: 0; opacity: 0.9;">
+            來源：<a href="${c.sourceUrl}" target="_blank" rel="noopener noreferrer" style="color: white; text-decoration: underline; text-underline-offset: 3px;">
+            ${c.sourceName}
+        </a>
+    </p>
+</div>
             </div>`;
 
         wrap.addEventListener('click', () => wrap.classList.toggle('flipped'));

@@ -5,10 +5,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
     background-color: var(--alabaster);
     position: relative;
     padding: 0 32px;
+    overflow: visible !important;
 }
 
 .hero-bg {
@@ -134,7 +135,7 @@
 
 .scroll-indicator {
     position: absolute;
-    bottom: 32px;
+    bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -142,6 +143,7 @@
     align-items: center;
     gap: 8px;
     animation: floatY 2s ease-in-out infinite;
+    z-index: 20;      /* 確保它不會被卡片或其他區塊蓋住 */
 }
 
 .scroll-text {
@@ -506,6 +508,21 @@
     .balance-sidebyside {
         grid-template-columns: 1fr 1fr;
         gap: 2.5rem;
+        align-items: stretch; /* 讓右側的外框跟隨左側的天平高度 */
+    }
+    
+    .balance-right-scroll {
+        position: relative; 
+        height: 100%;
+    }
+
+    .balance-right-inner {
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: fit-content;         
+        max-height: 100% !important;
     }
 }
 
@@ -523,18 +540,17 @@
 
 /* 右側：可獨立滾動的國家清單 */
 .balance-right-scroll {
-    min-width: 0;
+    position: relative;
 }
 
 .balance-right-inner {
     background: #fff;
     border-radius: 24px;
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem 1.5rem !important;
     box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-    max-height: 72vh;
+    max-height: 72vh; /* 手機版的最高限制 */
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--muted-sage) #f3f4f6;
+    box-sizing: border-box;
 }
 
 .balance-right-inner::-webkit-scrollbar {

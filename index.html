@@ -21,7 +21,7 @@
             border-radius: 24px;
             padding: 2rem;
             box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0;
         }
 
         .scale-svg-container-new {
@@ -418,6 +418,23 @@
             position: relative;
             margin-bottom: 0.4rem;
         }
+        /* ===== 將搜尋框和按鈕包在一起的漸層釘選容器 ===== */
+        .sticky-filter-wrap {
+            position: sticky;
+            top: 0; /* 完美貼齊白盒子最頂端 */
+            z-index: 10;
+            /* 上方補回 1.5rem (24px) 確保字不會太貼頂，下方留 25px 讓漸層自然過渡 */
+            padding: 1.5rem 0 25px 0;
+            /* 漸層特效：上方 75% 是純白純色遮罩，最後 25% 才慢慢透明淡出 */
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(255, 255, 255, 1) 75%, 
+                rgba(255, 255, 255, 0) 100%
+            );
+        }
+        .balance-right-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem !important;
+        }
     </style>
 </head>
 
@@ -681,12 +698,15 @@
                 <!-- 右：搜尋 + 地區篩選 + 國家格 -->
                 <div class="balance-right-scroll">
                     <div class="balance-right-inner">
-                        <div class="country-search-wrap">
+                        <div class="sticky-filter-wrap">
+                            <div class="country-search-wrap">
                             <span class="country-search-icon">🔍</span>
                             <input class="country-search-input" id="country-search" type="text"
                                 placeholder="搜尋國家（中文或英文）..." oninput="filterCountrySearch(this.value)" />
+                            </div>
+                            <div id="region-filters" class="region-filters"></div>
+                            
                         </div>
-                        <div id="region-filters" class="region-filters"></div>
                         <div id="country-grid" class="country-grid-new"></div>
                     </div>
                 </div>
