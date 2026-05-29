@@ -49,6 +49,14 @@
         document.getElementById('lb-title').textContent = item.title;
         document.getElementById('lb-sub').textContent = item.subtitle;
         document.getElementById('lb-desc').textContent = item.desc;
+        
+        // 🌟 新增：抓取對應的來源網址與名稱，並寫入剛剛在 HTML 建立的 a 標籤中
+        const lbSource = document.getElementById('lb-source');
+        if (lbSource) {
+            lbSource.href = item.sourceUrl;
+            lbSource.textContent = item.sourceName;
+        }
+
         document.getElementById('lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
     };

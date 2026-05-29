@@ -128,7 +128,7 @@ const EXHIBITS = [
         subtitle: 'The Motherhood Penalty', 
         desc: '2023年諾貝爾經濟學獎得主克勞迪婭·戈爾丁（Claudia Goldin），首次全面梳理了百年來女性的勞動力數據。她的研究證實，現代男女薪資差異不再只是因為教育程度，而是從「女性第一個孩子出生」那一刻起產生了難以跨越的鴻溝，這被稱為「母職懲罰」。', 
         img: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80', 
-        size: 'large',
+        size: 'small',
         sourceName: 'The Nobel Prize 官方聲明',
         sourceUrl: 'https://www.nobelprize.org/prizes/economic-sciences/2023/press-release/'
     },
@@ -140,8 +140,8 @@ const EXHIBITS = [
         desc: '你知道汽車防撞測試的假人，長年來都是以「男性體型」為預設基準嗎？這導致女性在嚴重車禍中受重傷的機率比男性高出 47%。《看不見的女性》一書揭露了這個忽視女性身體構造的致命科學盲點。', 
         img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80', 
         size: 'small',
-        sourceName: 'BBC 新聞：為何世界對女性不友善',
-        sourceUrl: 'https://www.bbc.com/zhongwen/trad/world-48995325'
+        sourceName: 'Consumer Reports 消費者報告',
+        sourceUrl: 'https://www.consumerreports.org/car-safety/crash-test-bias-how-male-focused-testing-puts-female-drivers-at-risk/'
     },
     { 
         id: 3, 
@@ -151,19 +151,19 @@ const EXHIBITS = [
         desc: '2023年10月，超過十萬名冰島女性（包含冰島總理）走上街頭進行全日罷工，抗議性別薪資差距與性別暴力。這場運動讓這個連續14年蟬聯「性別平權世界第一」的模範國家，日常運作完全停擺。', 
         img: 'https://images.unsplash.com/photo-1531263060782-b024de9b9793?w=600&q=80', 
         size: 'small',
-        sourceName: '中央社：冰島婦女罷工爭平權',
-        sourceUrl: 'https://www.cna.com.tw/news/aopl/202310240366.aspx'
+        sourceName: 'BBC：「不盡完美」的女漢子天堂',
+        sourceUrl: 'https://www.bbc.com/ukchina/trad/fooc-38314460'
     },
     { 
         id: 4, 
         category: '台灣現況', 
-        title: '多工作 54 天的「同酬日」', 
+        title: '多工作 59 天的「同酬日」', 
         subtitle: 'Taiwan Equal Pay Day', 
-        desc: '根據台灣勞動部統計，2024年的「性別同酬日」落在2月23日。這意味著，台灣女性在2023年必須比男性「多工作 54 天」，才能達到與男性相同的全年總薪資。', 
+        desc: '根據台灣勞動部統計，2026年的「性別同酬日」落在2月28日。這意味著，台灣女性在2025年必須比男性「多工作 59 天」，才能達到與男性相同的全年總薪資。', 
         img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80', 
-        size: 'large',
+        size: 'small',
         sourceName: '中華民國勞動部公告',
-        sourceUrl: 'https://www.mol.gov.tw/1607/1632/1633/68641/post'
+        sourceUrl: 'https://www.mol.gov.tw/1607/1632/1633/88294/'
     },
     { 
         id: 5, 
@@ -174,7 +174,7 @@ const EXHIBITS = [
         img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=80', 
         size: 'small',
         sourceName: '國際奧林匹克委員會 (IOC)',
-        sourceUrl: 'https://olympics.com/ioc/gender-equality'
+        sourceUrl: 'https://www.olympics.com/ioc/news/genderequalolympics-celebrating-full-gender-parity-on-the-field-of-play-at-paris-2024'
     },
     { 
         id: 6, 
@@ -184,8 +184,8 @@ const EXHIBITS = [
         desc: '2022年，蘇格蘭正式成為全球第一個立法「免費提供生理用品」的國家。這項法案不僅打破了傳統的月經羞辱，更從制度面解決了長期被忽視的「月經稅」與經濟弱勢女性的困境。', 
         img: 'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=600&q=80', 
         size: 'small',
-        sourceName: 'The Guardian 報導',
-        sourceUrl: 'https://www.theguardian.com/uk-news/2022/aug/15/scotland-becomes-first-nation-to-provide-free-period-products-for-all'
+        sourceName: 'BBC：月經貧困：蘇格蘭通過立法，將率先為全民免費提供生理期用品',
+        sourceUrl: 'https://www.bbc.com/zhongwen/trad/uk-55082893rst-nation-to-provide-free-period-products-for-all'
     },
     { 
         id: 7, 
@@ -194,7 +194,7 @@ const EXHIBITS = [
         subtitle: 'Afghan Women\'s Education', 
         desc: '截至 2024 年，阿富汗是全球唯一全面禁止女性接受中學及大學教育的國家。聯合國教科文組織嚴厲譴責，這項禁令影響了超過數百萬名阿富汗女孩，讓當地的平權進展倒退回數十年前。', 
         img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80', 
-        size: 'large',
+        size: 'small',
         sourceName: 'UNESCO 聯合國教科文組織',
         sourceUrl: 'https://www.unesco.org/en/articles/unesco-dedicates-2023-international-day-education-afghan-girls-and-women'
     },
@@ -206,8 +206,8 @@ const EXHIBITS = [
         desc: '走進超市，你會發現包裝為粉紅色、標榜「女性專用」的除毛刀或沐浴乳，即使成分與男性產品完全相同，價格卻往往高出 7% 到 13%。這正是生活中無處不在的「粉紅稅」現象。', 
         img: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&q=80', 
         size: 'small',
-        sourceName: '世界經濟論壇：什麼是粉紅稅',
-        sourceUrl: 'https://www.weforum.org/agenda/2022/07/pink-tax-gender-pricing-inflation/'
+        sourceName: '世界經濟論壇：What is the ‘pink tax’ and how does it hinder women?',
+        sourceUrl: 'https://www.weforum.org/stories/2022/07/what-is-the-pink-tax-and-how-does-it-hinder-women/'
     },
     { 
         id: 9, 
@@ -217,7 +217,7 @@ const EXHIBITS = [
         desc: '2000 年，國中生葉永鋕因性別氣質陰柔，長期遭受校園霸凌而不敢在下課時上廁所，最終不幸於廁所滑倒離世。這起令人心碎的悲劇震驚社會，直接促成了 2004 年《性別平等教育法》的通過，讓多元性別正式納入教育體系。', 
         img: 'https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=600&h=600&fit=crop&q=80', 
         size: 'small',
-        sourceName: '教育部性別平等教育全球資訊網',
-        sourceUrl: 'https://www.gender.edu.tw/'
+        sourceName: '臺灣國家婦女館',
+        sourceUrl: 'https://www.taiwanwomencenter.org.tw/zh-tw/NewsMgt/News/Content/1/news821'
     }
 ];
