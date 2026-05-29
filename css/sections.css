@@ -203,7 +203,6 @@
     transform: rotateY(180deg);
 }
 
-/* 🌟 正確且唯一的正反面設定，幽靈代碼已移除 */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
@@ -225,7 +224,7 @@
 
 .flip-card-back {
     transform: rotateY(180deg);
-    display: block;  /* 🌟 保證文字不會被 flex 往上推 */
+    display: block;  
     overflow-y: auto; 
     padding: 32px 24px; 
     scrollbar-width: thin;
@@ -257,7 +256,6 @@
     margin-bottom: 12px;
 }
 
-/* 🌟 讓原本的「點擊翻面」擁有呼吸燈特效 */
 .flip-hint {
     display: flex;
     align-items: center;
@@ -284,7 +282,7 @@
     font-size: 0.875rem;
     color: white;
     line-height: 1.7;
-    margin: 0; /* 🌟 確保文字沒有多餘的外距，避免被推出版面 */
+    margin: 0; 
 }
 
 /* ===== QUIZ ===== */
@@ -519,7 +517,6 @@
     margin: 0 auto;
 }
 
-/* 並排版面：左天平 sticky，右選國家 */
 .balance-sidebyside {
     display: grid;
     grid-template-columns: 1fr;
@@ -531,7 +528,7 @@
     .balance-sidebyside {
         grid-template-columns: 1fr 1fr;
         gap: 2.5rem;
-        align-items: stretch; /* 讓右側的外框跟隨左側的天平高度 */
+        align-items: stretch; 
     }
     
     .balance-right-scroll {
@@ -549,7 +546,6 @@
     }
 }
 
-/* 左側：天平＋數據，滾動時吸附 */
 .balance-left-sticky {
     position: sticky;
     top: 80px;
@@ -561,7 +557,6 @@
     }
 }
 
-/* 右側：可獨立滾動的國家清單 */
 .balance-right-scroll {
     position: relative;
 }
@@ -571,7 +566,7 @@
     border-radius: 24px;
     padding: 0 1.5rem 1.5rem 1.5rem !important;
     box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-    max-height: 72vh; /* 手機版的最高限制 */
+    max-height: 72vh; 
     overflow-y: auto;
     box-sizing: border-box;
 }
@@ -597,7 +592,6 @@
     }
 }
 
-/* 搜尋框 */
 .country-search-wrap {
     position: relative;
     margin-bottom: 1rem;
@@ -776,4 +770,18 @@
 
 .exhibit-card:hover .zoom-icon {
     opacity: 1;
+}
+
+/* ========================================= */
+/* 🌟 展覽燈箱圖片：自動放大填滿 + 沉浸式緩動 */
+/* ========================================= */
+.lightbox-card {
+    overflow: hidden !important; /* 確保圖片放大時不會超出卡片的圓角邊界 */
+}
+
+.lightbox-img {
+    align-self: stretch !important;    /* 讓圖片高度撐滿整個左側空間 */
+    object-fit: cover !important;      /* 🌟 關鍵：自動放大以完全填滿畫面，消除所有白邊 */
+    max-height: 100% !important;       
+    animation: slowZoom 15s ease-in-out infinite alternate; /* 加上非常緩慢的電影級呼吸放大動畫 */
 }
