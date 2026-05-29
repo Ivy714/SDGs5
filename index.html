@@ -1077,6 +1077,23 @@
             }
             setTimeout(tick, 800);
         })();
+
+        // 🌟 新增：翻翻卡滾動重置邏輯
+        document.addEventListener('click', function(e) {
+            const cardWrap = e.target.closest('.flip-card-wrap');
+            if (cardWrap) {
+                const backFace = cardWrap.querySelector('.flip-card-back');
+                if (backFace) {
+                    // 等卡片翻回正面的動畫 (設定為 0.7秒) 快結束時，偷偷把背面的滾動條歸零
+                    setTimeout(() => {
+                        // 如果卡片已經不在翻轉狀態 (翻回正面了)
+                        if (!cardWrap.classList.contains('flipped')) {
+                            backFace.scrollTop = 0;
+                        }
+                    }, 600); 
+                }
+            }
+        });
     </script>
 
     <script type="text/javascript">
