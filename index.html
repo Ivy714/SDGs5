@@ -427,6 +427,35 @@
             padding: 0 1.5rem 1.5rem 1.5rem !important;
         }
 
+        /* 🌟 新增：天平數據排序下拉選單美化 */
+        .sort-select-dropdown {
+            padding: 10px 32px 10px 16px;
+            border-radius: 99px;
+            border: 1.5px solid #E5E5E5;
+            background-color: #fafafa;
+            color: #333;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            appearance: none; /* 隱藏原生箭頭 */
+            /* 畫一個精緻的自訂箭頭 */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23aaa%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px top 50%;
+            background-size: 10px auto;
+        }
+
+        .sort-select-dropdown:hover, .sort-select-dropdown:focus {
+            border-color: var(--muted-sage);
+            background-color: #fff;
+        }
+
+        .sort-select-dropdown:focus {
+            box-shadow: 0 0 0 3px rgba(139, 154, 130, 0.15);
+        }
+
         /* 🌟 展覽燈箱左右導航按鈕樣式 */
         .lightbox-nav {
             position: absolute;
@@ -446,7 +475,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
-            user-select: none; /* 避免連點時反白文字 */
+            user-select: none;
         }
 
         .lightbox-nav:hover {
@@ -731,20 +760,24 @@
                     </div>
                 </div>
 
-                <!-- 右：搜尋 + 排序 + 國家格 -->
+                <!-- 右：搜尋 + 下拉排序選單 + 國家格 -->
                 <div class="balance-right-scroll">
                     <div class="balance-right-inner">
                         <div class="sticky-filter-wrap">
-                            <!-- 🌟 搜尋框與排序按鈕 -->
                             <div class="country-search-wrap" style="display: flex; gap: 8px;">
                                 <div style="position: relative; flex: 1;">
                                     <span class="country-search-icon">🔍</span>
                                     <input class="country-search-input" id="country-search" type="text"
                                         placeholder="搜尋國家（中文或英文）..." oninput="filterCountrySearch(this.value)" />
                                 </div>
-                                <button id="sort-btn" class="region-btn" style="white-space: nowrap; margin: 0; padding: 0 16px;" onclick="toggleSort()">
-                                    ↕ 預設排序
-                                </button>
+                                <!-- 🌟 將原本的按鈕替換為下拉式選單 -->
+                                <select id="sort-select" class="sort-select-dropdown" onchange="handleSortChange(this.value)">
+                                    <option value="default">預設排序</option>
+                                    <option value="desc">平等度 (高→低)</option>
+                                    <option value="asc">平等度 (低→高)</option>
+                                    <option value="name-asc">國家名稱 (A→Z)</option>
+                                    <option value="name-desc">國家名稱 (Z→A)</option>
+                                </select>
                             </div>
                             <div id="region-filters" class="region-filters"></div>
                         </div>
@@ -771,7 +804,7 @@
 
     <!-- LIGHTBOX -->
     <div id="lightbox">
-        <!-- 🌟 新增：展覽燈箱的左右切換按鈕 -->
+        <!-- 展覽燈箱的左右切換按鈕 -->
         <button class="lightbox-nav prev" id="lb-prev" onclick="navigateLightbox(-1)">‹</button>
         <button class="lightbox-nav next" id="lb-next" onclick="navigateLightbox(1)">›</button>
 
@@ -957,20 +990,9 @@
         let activeCountryId = 'ISL';
         let currentSort = 'default';
 
-        function toggleSort() {
-            const btn = document.getElementById('sort-btn');
-            if (currentSort === 'default') {
-                currentSort = 'desc'; 
-                btn.textContent = '↓ 平等度 (高→低)';
-                btn.classList.add('active');
-            } else if (currentSort === 'desc') {
-                currentSort = 'asc'; 
-                btn.textContent = '↑ 平等度 (低→高)';
-            } else {
-                currentSort = 'default'; 
-                btn.textContent = '↕ 預設排序';
-                btn.classList.remove('active');
-            }
+        // 🌟 新增：改由下拉選單觸發的排序邏輯
+        function handleSortChange(val) {
+            currentSort = val;
             renderCountryGrid(); 
         }
 
@@ -1007,10 +1029,15 @@
             
             let list = activeRegion === 'all' ? [...fullGgiData] : fullGgiData.filter(c => c.region === activeRegion);
             
+            // 🌟 處理新增的 A-Z, Z-A 排序選項
             if (currentSort === 'desc') {
                 list.sort((a, b) => b.ggi - a.ggi);
             } else if (currentSort === 'asc') {
                 list.sort((a, b) => a.ggi - b.ggi);
+            } else if (currentSort === 'name-asc') {
+                list.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (currentSort === 'name-desc') {
+                list.sort((a, b) => b.name.localeCompare(a.name));
             }
 
             list.forEach(country => {
@@ -1104,7 +1131,7 @@
                 outer.style.left = ox + 'px'; outer.style.top = oy + 'px';
                 requestAnimationFrame(anim);
             })();
-            const targets = 'a,button,input,[role="button"],.country-btn,.region-btn,.hero-card,.section-dot';
+            const targets = 'a,button,input,select,[role="button"],.country-btn,.region-btn,.hero-card,.section-dot';
             document.addEventListener('mouseover', e => { if (e.target.closest(targets)) document.body.classList.add('cursor-hover'); });
             document.addEventListener('mouseout', e => { if (e.target.closest(targets)) document.body.classList.remove('cursor-hover'); });
             document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
@@ -1153,7 +1180,7 @@
             setTimeout(tick, 800);
         })();
 
-        // 🌟 翻翻卡滾動重置邏輯
+        // 翻翻卡滾動重置邏輯
         document.addEventListener('click', function(e) {
             const cardWrap = e.target.closest('.flip-card-wrap');
             if (cardWrap) {
