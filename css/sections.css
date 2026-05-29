@@ -143,7 +143,7 @@
     align-items: center;
     gap: 8px;
     animation: floatY 2s ease-in-out infinite;
-    z-index: 20;      /* 確保它不會被卡片或其他區塊蓋住 */
+    z-index: 20;
 }
 
 .scroll-text {
@@ -187,7 +187,7 @@
 
 .flip-card-wrap {
     perspective: 1200px;
-    height: 220px;
+    height: 280px;
     cursor: pointer;
 }
 
@@ -203,6 +203,7 @@
     transform: rotateY(180deg);
 }
 
+/* 🌟 正確且唯一的正反面設定，幽靈代碼已移除 */
 .flip-card-front,
 .flip-card-back {
     position: absolute;
@@ -211,11 +212,12 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     border-radius: 16px;
-    padding: 24px;
+    box-sizing: border-box; 
 }
 
 .flip-card-front {
     background-color: var(--sandstone);
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -223,9 +225,22 @@
 
 .flip-card-back {
     transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: block;  /* 🌟 保證文字不會被 flex 往上推 */
+    overflow-y: auto; 
+    padding: 32px 24px; 
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+.flip-card-back::-webkit-scrollbar {
+    width: 5px;
+}
+.flip-card-back::-webkit-scrollbar-track {
+    background: transparent;
+}
+.flip-card-back::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
 }
 
 .flip-card-tag {
@@ -242,10 +257,17 @@
     margin-bottom: 12px;
 }
 
+/* 🌟 讓原本的「點擊翻面」擁有呼吸燈特效 */
 .flip-hint {
     display: flex;
     align-items: center;
     gap: 8px;
+    animation: pulseHint 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseHint {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 .flip-hint-line {
@@ -262,6 +284,7 @@
     font-size: 0.875rem;
     color: white;
     line-height: 1.7;
+    margin: 0; /* 🌟 確保文字沒有多餘的外距，避免被推出版面 */
 }
 
 /* ===== QUIZ ===== */
