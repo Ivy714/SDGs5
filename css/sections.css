@@ -256,16 +256,11 @@
     margin-bottom: 12px;
 }
 
+/* 🌟 已還原：安靜優雅的點擊翻面提示 */
 .flip-hint {
     display: flex;
     align-items: center;
     gap: 8px;
-    animation: pulseHint 2.5s infinite ease-in-out;
-}
-
-@keyframes pulseHint {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
 }
 
 .flip-hint-line {
@@ -773,15 +768,14 @@
 }
 
 /* ========================================= */
-/* 🌟 展覽燈箱圖片：自動放大填滿 + 沉浸式緩動 */
+/* 🌟 展覽燈箱圖片：無動畫的自動置中填滿 */
 /* ========================================= */
 .lightbox-card {
-    overflow: hidden !important; /* 確保圖片放大時不會超出卡片的圓角邊界 */
+    overflow: hidden !important; 
 }
 
 .lightbox-img {
-    align-self: stretch !important;    /* 讓圖片高度撐滿整個左側空間 */
-    object-fit: cover !important;      /* 🌟 關鍵：自動放大以完全填滿畫面，消除所有白邊 */
+    align-self: stretch !important;    
+    object-fit: cover !important;      
     max-height: 100% !important;       
-    animation: slowZoom 15s ease-in-out infinite alternate; /* 加上非常緩慢的電影級呼吸放大動畫 */
 }
