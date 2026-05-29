@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/sections.css" />
 
     <style>
-        /* ===== 天平區塊 inline 樣式（避免影響原始 CSS 結構）===== */
+        /* ===== 天平區塊 inline 樣式 ===== */
         .scale-wrap-new {
             background: #fff;
             border-radius: 24px;
@@ -402,38 +402,74 @@
         }
 
         @keyframes blink-cur {
-
-            0%,
-            100% {
-                opacity: 1
-            }
-
-            50% {
-                opacity: 0
-            }
+            0%, 100% { opacity: 1 }
+            50% { opacity: 0 }
         }
 
-        /* ===== GGI 進度條刻度 ===== */
         .progress-track-wrapper {
             position: relative;
             margin-bottom: 0.4rem;
         }
-        /* ===== 將搜尋框和按鈕包在一起的漸層釘選容器 ===== */
+        
         .sticky-filter-wrap {
             position: sticky;
-            top: 0; /* 完美貼齊白盒子最頂端 */
+            top: 0; 
             z-index: 10;
-            /* 上方補回 1.5rem (24px) 確保字不會太貼頂，下方留 25px 讓漸層自然過渡 */
             padding: 1.5rem 0 25px 0;
-            /* 漸層特效：上方 75% 是純白純色遮罩，最後 25% 才慢慢透明淡出 */
             background: linear-gradient(to bottom, 
                 rgba(255, 255, 255, 1) 0%, 
                 rgba(255, 255, 255, 1) 75%, 
                 rgba(255, 255, 255, 0) 100%
             );
         }
+        
         .balance-right-inner {
             padding: 0 1.5rem 1.5rem 1.5rem !important;
+        }
+
+        /* 🌟 展覽燈箱左右導航按鈕樣式 */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            user-select: none; /* 避免連點時反白文字 */
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-nav.prev {
+            left: 3%;
+        }
+
+        .lightbox-nav.next {
+            right: 3%;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .lightbox-nav.prev { left: 10px; }
+            .lightbox-nav.next { right: 10px; }
         }
     </style>
 </head>
@@ -695,17 +731,22 @@
                     </div>
                 </div>
 
-                <!-- 右：搜尋 + 地區篩選 + 國家格 -->
+                <!-- 右：搜尋 + 排序 + 國家格 -->
                 <div class="balance-right-scroll">
                     <div class="balance-right-inner">
                         <div class="sticky-filter-wrap">
-                            <div class="country-search-wrap">
-                            <span class="country-search-icon">🔍</span>
-                            <input class="country-search-input" id="country-search" type="text"
-                                placeholder="搜尋國家（中文或英文）..." oninput="filterCountrySearch(this.value)" />
+                            <!-- 🌟 搜尋框與排序按鈕 -->
+                            <div class="country-search-wrap" style="display: flex; gap: 8px;">
+                                <div style="position: relative; flex: 1;">
+                                    <span class="country-search-icon">🔍</span>
+                                    <input class="country-search-input" id="country-search" type="text"
+                                        placeholder="搜尋國家（中文或英文）..." oninput="filterCountrySearch(this.value)" />
+                                </div>
+                                <button id="sort-btn" class="region-btn" style="white-space: nowrap; margin: 0; padding: 0 16px;" onclick="toggleSort()">
+                                    ↕ 預設排序
+                                </button>
                             </div>
                             <div id="region-filters" class="region-filters"></div>
-                            
                         </div>
                         <div id="country-grid" class="country-grid-new"></div>
                     </div>
@@ -730,6 +771,10 @@
 
     <!-- LIGHTBOX -->
     <div id="lightbox">
+        <!-- 🌟 新增：展覽燈箱的左右切換按鈕 -->
+        <button class="lightbox-nav prev" id="lb-prev" onclick="navigateLightbox(-1)">‹</button>
+        <button class="lightbox-nav next" id="lb-next" onclick="navigateLightbox(1)">›</button>
+
         <div class="lightbox-card">
             <img class="lightbox-img" id="lb-img" src="" alt="" />
             <div class="lightbox-info">
@@ -739,7 +784,6 @@
                 <div class="lightbox-divider"></div>
                 <p class="lightbox-desc" id="lb-desc"></p>
                 
-                <!-- 🌟 這裡就是我們為展覽燈箱新增的來源連結區塊 -->
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.08);">
                     <p style="font-size: 0.85rem; color: #777; margin: 0;">
                         來源：<a id="lb-source" href="" target="_blank" rel="noopener noreferrer" style="color: var(--muted-sage); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; transition: color 0.2s;"></a>
@@ -911,6 +955,24 @@
 
         let activeRegion = 'all';
         let activeCountryId = 'ISL';
+        let currentSort = 'default';
+
+        function toggleSort() {
+            const btn = document.getElementById('sort-btn');
+            if (currentSort === 'default') {
+                currentSort = 'desc'; 
+                btn.textContent = '↓ 平等度 (高→低)';
+                btn.classList.add('active');
+            } else if (currentSort === 'desc') {
+                currentSort = 'asc'; 
+                btn.textContent = '↑ 平等度 (低→高)';
+            } else {
+                currentSort = 'default'; 
+                btn.textContent = '↕ 預設排序';
+                btn.classList.remove('active');
+            }
+            renderCountryGrid(); 
+        }
 
         function initBalance() {
             renderRegionBtns();
@@ -942,7 +1004,15 @@
             const container = document.getElementById('country-grid');
             if (!container) return;
             container.innerHTML = '';
-            const list = activeRegion === 'all' ? fullGgiData : fullGgiData.filter(c => c.region === activeRegion);
+            
+            let list = activeRegion === 'all' ? [...fullGgiData] : fullGgiData.filter(c => c.region === activeRegion);
+            
+            if (currentSort === 'desc') {
+                list.sort((a, b) => b.ggi - a.ggi);
+            } else if (currentSort === 'asc') {
+                list.sort((a, b) => a.ggi - b.ggi);
+            }
+
             list.forEach(country => {
                 const btn = document.createElement('button');
                 btn.className = 'country-btn' + (country.id === activeCountryId ? ' active' : '');
@@ -956,6 +1026,11 @@
                 };
                 container.appendChild(btn);
             });
+            
+            const searchInput = document.getElementById('country-search');
+            if(searchInput && searchInput.value) {
+                filterCountrySearch(searchInput.value);
+            }
         }
 
         function updateScale(country) {
@@ -1078,15 +1153,13 @@
             setTimeout(tick, 800);
         })();
 
-        // 🌟 新增：翻翻卡滾動重置邏輯
+        // 🌟 翻翻卡滾動重置邏輯
         document.addEventListener('click', function(e) {
             const cardWrap = e.target.closest('.flip-card-wrap');
             if (cardWrap) {
                 const backFace = cardWrap.querySelector('.flip-card-back');
                 if (backFace) {
-                    // 等卡片翻回正面的動畫 (設定為 0.7秒) 快結束時，偷偷把背面的滾動條歸零
                     setTimeout(() => {
-                        // 如果卡片已經不在翻轉狀態 (翻回正面了)
                         if (!cardWrap.classList.contains('flipped')) {
                             backFace.scrollTop = 0;
                         }
